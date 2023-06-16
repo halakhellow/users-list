@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+
+import Spinner from "./Spinner";
+
 import UsersGrid from "./UsersGrid";
 import UsersList from "./UsersList";
 import UsersTable from "./UsersTable";
@@ -6,11 +9,15 @@ import PieChartComponent from "./PieChart";
 
 const Homepage = () => {
   const [users, setUsers] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("https://dummyjson.com/users")
       .then((response) => response.json())
-      .then((data) => setUsers(data.users))
+      .then((data) => {
+        setUsers(data.users);
+        setIsLoading(false);
+      })
       .catch((error) => console.log(error));
   }, []);
 
@@ -67,10 +74,16 @@ const Homepage = () => {
           Pie Chart
         </button>
       </div>
-      {displayType === "grid" && <UsersGrid users={users} />}
-      {displayType === "list" && <UsersList users={users} />}
-      {displayType === "table" && <UsersTable users={users} />}
-      {displayType === "pie-chart" && <PieChartComponent users={users} />}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {displayType === "grid" && <UsersGrid users={users} />}
+          {displayType === "list" && <UsersList users={users} />}
+          {displayType === "table" && <UsersTable users={users} />}
+          {displayType === "pie-chart" && <PieChartComponent users={users} />}
+        </>
+      )}
     </div>
   );
 };
