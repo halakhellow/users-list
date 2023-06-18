@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react";
 import Spinner from "./Spinner";
 
 import UsersGrid from "./UsersGrid";
-import UsersList from "./UsersList";
 import UsersTable from "./UsersTable";
 import PieChartComponent from "./PieChart";
+import BarChart from "./BarChart";
 
 const Homepage = () => {
   const [users, setUsers] = useState([]);
@@ -45,16 +45,6 @@ const Homepage = () => {
         </button>
         <button
           className={`${
-            displayType === "list"
-              ? "bg-lightOrange text-white"
-              : "bg-gray-300 text-gray-700"
-          } px-4 py-2 rounded-md`}
-          onClick={() => handleDisplayType("list")}
-        >
-          List
-        </button>
-        <button
-          className={`${
             displayType === "table"
               ? "bg-lightOrange text-white"
               : "bg-gray-300 text-gray-700"
@@ -73,15 +63,25 @@ const Homepage = () => {
         >
           Pie Chart
         </button>
+        <button
+          className={`${
+            displayType === "bar-chart"
+              ? "bg-lightOrange text-white"
+              : "bg-gray-300 text-gray-700"
+          } px-4 py-2 rounded-md`}
+          onClick={() => handleDisplayType("bar-chart")}
+        >
+          Bar Chart
+        </button>
       </div>
       {isLoading ? (
         <Spinner />
       ) : (
         <>
           {displayType === "grid" && <UsersGrid users={users} />}
-          {displayType === "list" && <UsersList users={users} />}
           {displayType === "table" && <UsersTable users={users} />}
           {displayType === "pie-chart" && <PieChartComponent users={users} />}
+          {displayType === "bar-chart" && <BarChart users={users} />}
         </>
       )}
     </div>
