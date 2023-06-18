@@ -1,6 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
+import PopupWindow from "./PopupWindow";
 
 const UsersGrid = ({ users }) => {
+  const [selectedUser, setSelectedUser] = useState(null);
+
+  const openPopup = (user) => {
+    setSelectedUser(user);
+  };
+
+  const closePopup = () => {
+    setSelectedUser(null);
+  };
+
   return (
     <div className="container mx-auto p-4">
       <h2 className="text-white text-2xl font-bold mb-4">Users Cards</h2>
@@ -19,9 +30,16 @@ const UsersGrid = ({ users }) => {
             </div>
             <p className="font-semibold mb-1">{user.company.title}</p>
             <p className="text-gray-600 mb-2">{user.email}</p>
+            <button
+              className="bg-lightOrange text-sm text-white px-4 py-2 rounded-md transition duration-500 hover:bg-darkBlue"
+              onClick={() => openPopup(user)}
+            >
+              Show Details
+            </button>
           </div>
         ))}
       </div>
+      {selectedUser && <PopupWindow user={selectedUser} onClose={closePopup} />}
     </div>
   );
 };
