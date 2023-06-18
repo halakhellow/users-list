@@ -6,6 +6,7 @@ import UsersGrid from "./UsersGrid";
 import UsersTable from "./UsersTable";
 import PieChartComponent from "./PieChart";
 import BarChart from "./BarChart";
+import ScatterPlot from "./ScatterPlot";
 
 const Homepage = () => {
   const [users, setUsers] = useState([]);
@@ -73,6 +74,16 @@ const Homepage = () => {
         >
           Bar Chart
         </button>
+        <button
+          className={`${
+            displayType === "scatter-plot"
+              ? "bg-lightOrange text-white"
+              : "bg-gray-300 text-gray-700"
+          } px-4 py-2 rounded-md`}
+          onClick={() => handleDisplayType("scatter-plot")}
+        >
+          Scatter Plot
+        </button>
       </div>
       {isLoading ? (
         <Spinner />
@@ -82,6 +93,7 @@ const Homepage = () => {
           {displayType === "table" && <UsersTable users={users} />}
           {displayType === "pie-chart" && <PieChartComponent users={users} />}
           {displayType === "bar-chart" && <BarChart users={users} />}
+          {displayType === "scatter-plot" && <ScatterPlot users={users} />}
         </>
       )}
     </div>
