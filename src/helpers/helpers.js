@@ -8,3 +8,38 @@ export const calculateAverageAge = (users) => {
 
   return averageAge;
 };
+
+export const renderUserDetails = (user) => {
+  return Object.entries(user).map(([key, value]) => {
+    if (typeof value === "object" && value !== null) {
+      return (
+        <div key={key} className="mb-2">
+          <p className="text-gray-600">
+            <strong>{key}: </strong>
+          </p>
+          {renderUserDetails(value)}
+        </div>
+      );
+    }
+
+    return (
+      <p key={key} className="text-gray-600">
+        <strong>{key}: </strong> {value}
+      </p>
+    );
+  });
+};
+
+export const maskSensitiveFields = (user) => {
+  const maskedUser = { ...user };
+
+  maskedUser.password = "********";
+  maskedUser.phone = "*********";
+  maskedUser.ip = "***.***.**.***";
+  maskedUser.address = "**********";
+  maskedUser.macAddress = "**********";
+  maskedUser.bank = "***************";
+  maskedUser.ssn = "***-**-****";
+
+  return maskedUser;
+};
