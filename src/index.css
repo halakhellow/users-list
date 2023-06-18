@@ -16,3 +16,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.VictoryContainer {
+  background-color: #d1d5db;
+  border-radius: 1rem;
+  padding: 2rem;
+}
