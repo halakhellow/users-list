@@ -1,7 +1,11 @@
 # Users' data visualization
 Multiple ways to display users' data
 
-## Installation
+## Live demo
+You can find the application live [here](https://data-display.onrender.com/)
+
+
+## Local Installation
 1. Clone the repository to your local machine using the following command: <br/>
 ``` git clone https://github.com/halakhellow/users-list.git ```
 
