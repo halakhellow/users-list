@@ -33,6 +33,7 @@ export const renderUserDetails = (user) => {
 export const maskSensitiveFields = (user) => {
   const maskedUser = { ...user };
 
+  maskedUser.id = "*";
   maskedUser.password = "********";
   maskedUser.phone = "*********";
   maskedUser.ip = "***.***.**.***";
