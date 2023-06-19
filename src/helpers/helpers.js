@@ -40,6 +40,7 @@ export const maskSensitiveFields = (user) => {
   maskedUser.address = "**********";
   maskedUser.macAddress = "**********";
   maskedUser.bank = "***************";
+  maskedUser.ein = "**-*******";
   maskedUser.ssn = "***-**-****";
 
   return maskedUser;
