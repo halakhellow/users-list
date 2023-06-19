@@ -18,7 +18,7 @@ const UsersTable = ({ users }) => {
       <table className="min-w-full bg-white border border-gray-400">
         <thead>
           <tr>
-            <th className="px-6 py-4 text-xl border-b border-gray-400">ID</th>
+            <th className="px-6 py-4 text-xl border-b border-gray-400"></th>
             <th className="px-6 py-4 text-xl border-b border-gray-400">Name</th>
             <th className="px-6 py-4 text-xl border-b border-gray-400">
               Title
